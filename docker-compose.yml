@@ -1,0 +1,24 @@
+version: '3'
+services:
+  oneframe:
+    image: paidyinc/one-frame
+    container_name: oneframe
+    ports:
+      - "8080:8080"
+    networks:
+      - forex-proxy-net
+
+  forex-proxy:
+    build:
+      context: .
+    container_name: forex-proxy
+    ports:
+      - "8082:8082"
+    networks:
+      - forex-proxy-net
+    environment:
+      - BASE_URI=http://oneframe:8080/rates
+
+networks:
+  forex-proxy-net:
+    driver: bridge
