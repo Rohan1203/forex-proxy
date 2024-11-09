@@ -100,3 +100,5 @@ WARNING: Unmatched cancel notification for request id 75
 2024.11.09 15:06:27 INFO  no build target found for /Users/ts-rohan.das/dev-workspace/interview/forex-proxy/src/main/scala/forex/services/rates/interpreters/OneFrameService.scala. Using presentation compiler with project's scala-library version: 3.3.4
 2024.11.09 15:06:58 INFO  no build target found for /Users/ts-rohan.das/dev-workspace/interview/forex-proxy/src/main/scala/forex/services/rates/interpreters/OneFrameService.scala. Using presentation compiler with project's scala-library version: 3.3.4
 2024.11.09 15:10:13 INFO  no build target found for /Users/ts-rohan.das/dev-workspace/interview/forex-proxy/src/main/scala/forex/services/rates/interpreters/OneFrameService.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2024.11.09 15:56:26 INFO  Started: Metals version 1.4.0 in folders '/Users/rohan.das/dev-workspace/forex-proxy' for client Visual Studio Code 1.93.1.[0m
+2024.11.09 15:56:30 WARN  Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.[0m

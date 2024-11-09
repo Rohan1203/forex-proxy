@@ -5,3 +5,5 @@ logs/*.log
 *.db
 # *.conf
 /target/
+.metals/
+.scala-build/*
