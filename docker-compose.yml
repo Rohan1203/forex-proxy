@@ -1,0 +1,29 @@
+services:
+  oneframe:
+    image: paidyinc/one-frame
+    container_name: oneframe
+    ports:
+      - "8080:8080"
+    networks:
+      - forex-proxy-net
+
+  cassandra:
+    image: cassandra:4.1
+    container_name: cassandra
+    ports:
+      - "9042:9042"
+    networks:
+      - forex-proxy-net
+    environment:
+      - CASSANDRA_CLUSTER_NAME=ForexCluster
+      - CASSANDRA_NUM_TOKENS=256
+      - CASSANDRA_START_RPC=true
+    healthcheck:
+      test: ["CMD", "cqlsh", "-e", "describe keyspaces"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks:
+  forex-proxy-net:
+    driver: bridge
