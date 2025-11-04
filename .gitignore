@@ -1,5 +1,5 @@
 .vscode
-logs/
+logs/*
 target/
 .metals/
 .bloop/
