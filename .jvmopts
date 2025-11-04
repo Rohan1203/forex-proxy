@@ -1,0 +1,6 @@
+-Xms512m
+-Xmx1g
+-XX:+UseG1GC
+-Xlog:gc*,safepoint:file=logs/gc.log:time,uptime,level,tags:filecount=5,filesize=50M
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=logs/heapdump.hprof

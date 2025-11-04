@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   oneframe:
     image: paidyinc/one-frame
@@ -24,6 +26,32 @@ services:
       timeout: 10s
       retries: 5
 
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - forex-proxy-net
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+
+  redis-ui:
+    image: ghcr.io/joeferner/redis-commander:latest
+    container_name: redis-ui
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+    networks:
+      - forex-proxy-net
+    depends_on:
+      - redis
+
 networks:
   forex-proxy-net:
     driver: bridge
+
+volumes:
+  redis-data:

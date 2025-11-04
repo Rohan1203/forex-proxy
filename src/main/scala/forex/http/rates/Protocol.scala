@@ -8,6 +8,10 @@ import io.circe._
 import io.circe.generic.extras.Configuration
 import io.circe.generic.extras.semiauto.deriveConfiguredEncoder
 
+/**
+  * data format translator
+  */
+
 object Protocol {
 
   implicit val configuration: Configuration = Configuration.default.withSnakeCaseMemberNames
@@ -31,8 +35,9 @@ object Protocol {
       last_updated: String
   )
 
-  final case class GetBatchApiResponse(
-      rates: List[GetApiResponse]
+  final case class ErrorResponse(
+      error: String,
+      message: String
   )
 
   implicit val currencyEncoder: Encoder[Currency] =
@@ -50,7 +55,7 @@ object Protocol {
   implicit val responseEncoder: Encoder[GetApiResponse] =
     deriveConfiguredEncoder[GetApiResponse]
 
-  implicit val batchResponseEncoder: Encoder[GetBatchApiResponse] =
-    deriveConfiguredEncoder[GetBatchApiResponse]
+  implicit val errorResponseEncoder: Encoder[ErrorResponse] =
+    deriveConfiguredEncoder[ErrorResponse]
 
 }

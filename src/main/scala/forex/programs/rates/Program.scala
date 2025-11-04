@@ -15,16 +15,16 @@ class Program[F[_]: Sync](
 
   private val logger = LoggerFactory.getLogger(getClass)
 
-  override def get(request: Protocol.GetRatesRequest): F[Error Either Rate] =
+  override def get(request: Protocol.GetRatesRequest, clientId: Option[String] = None): F[Error Either Rate] =
     for {
-      _ <- Sync[F].delay(logger.info(s"Processing rate request: ${request.from} -> ${request.to}"))
-      result <- EitherT(ratesService.get(Rate.Pair(request.from, request.to)))
+      _ <- Sync[F].delay(logger.info(s"processing rate request: ${request.from} -> ${request.to} (client: ${clientId.getOrElse("unknown")})"))
+      result <- EitherT(ratesService.get(Rate.Pair(request.from, request.to), clientId))
         .leftMap { error =>
-          logger.warn(s"Service error for ${request.from} -> ${request.to}: $error")
+          logger.error(s"service error for ${request.from} -> ${request.to}: $error")
           toProgramError(error)
         }
         .map { rate =>
-          logger.debug(s"Successfully retrieved rate: $rate")
+          logger.debug(s"successfully retrieved rate: $rate")
           rate
         }
         .value

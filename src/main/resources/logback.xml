@@ -82,7 +82,7 @@
         <appender-ref ref="APP_LOG" />
     </root>
 
-    <!-- Application-specific logger - All forex application logs -->
+    <!-- Application-level logger - All forex application logs -->
     <logger name="forex" level="DEBUG">
         <!-- This will write to APP_LOG via root logger -->
     </logger>
