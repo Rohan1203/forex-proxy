@@ -38,7 +38,7 @@ A proxy service to convert the currency pair rates with handling **OneFrame quot
 
 - Start the docker-compose containing
   - Oneframe Service
-  - Redis DB
+  - Redis DB (must start before application)
   - Redis UI
   - Cassandra DB
 
@@ -112,3 +112,4 @@ $ sbt clean run
 
 - Can improve the db design
 - Can implement request debounce with queue to protect the cache miss
+- fix redis connection pool, which impact the application start up
