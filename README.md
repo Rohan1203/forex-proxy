@@ -52,6 +52,20 @@ docker-compose -d up
 sbt clean run
 ```
 
+## APIs exposed
+
+- /rates?xxx&xxx
+
+### Example
+```bash
+http://localhost:8082/rates?from=USD&to=TTD
+
+
+```
+Note: Also, you can whitelist the client to avoid rate limiting by adding a client-id in the header and specifying in the [configuration](https://github.com/Rohan1203/forex-proxy/blob/main/src/main/resources/application.conf#L44)
+![alt text](image.png)
+
+
 ## Example
 
 ```bash
